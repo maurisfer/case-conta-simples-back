@@ -2,10 +2,6 @@ const mongoose = require('../../config/db'); // Importa o arquivo de configuraç
 
 const AccountSchema = mongoose.Schema(
   {
-    _id: {
-      type: Number,
-      reqired: true,
-    }, // Aqui na hora de gerar verificar como gerar numeros aleatórios de 1 a 1000 a titulo de exemplo
     enterpriseName: {
       type: String,
       required: true,
@@ -22,17 +18,23 @@ const AccountSchema = mongoose.Schema(
       type: Number,
       required: true,
     },
-    accountNumer: {
-      type: Number,
-      required: true,
+    accountNumber: {
+      type: String,
+      required: false,
     },
   },
   {
     timestamps: true,
   }
 ); // Configuração dos dados que vão para o banco de dados através do Schema da biblioteca mongoose
-ccountSchema.pre('save', async function (next) {
-  // Aqui gerar um código para que antes de salvar o numero da conta seja igual ao if do banco de dados
+AccountSchema.pre('save', async function (next) {
+  function accNumber(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+  };
+  this.accountNumber = `000${accNumber(1, 10000)}`;
+  next();
 });
 
 const Account = mongoose.model('Account', AccountSchema); // Cria o modelo a partir da configuração

@@ -3,17 +3,16 @@ const { _id: id } = require('./accountModel');
 
 const CardSchema = mongoose.Schema(
   {
-    account_id: {
-      type: Number,
-      required: true,
-    }, // Vai puxar o id da conta e vincular o cartão a conta
+    // account_id: {
+    //   type: Number,
+    //   required: true,
+    // }, // Vai puxar o id da conta e vincular o cartão a conta
     cardName: {
       type: String,
       required: true,
     },
     cardNumber: {
-      type: Number,
-      required: true,
+      type: String,
     },
     cardExpire: {
       type: Date,
@@ -26,7 +25,13 @@ const CardSchema = mongoose.Schema(
 ); // Configuração dos dados que vão para o banco de dados através do Schema da biblioteca mongoose
 
 CardSchema.pre('save', async function (next) {
-  this.account_id = id;
+  function CardNumber(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+  this.cardNumber = `**** **** **** ${CardNumber(1, 10000)}`;
+  next();
 });
 
 const Card = mongoose.model('Card', CardSchema); // Cria o modelo a partir da configuração
