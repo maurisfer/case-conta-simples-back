@@ -5,7 +5,7 @@ const AccountSchema = mongoose.Schema(
     enterpriseName: {
       type: String,
       required: true,
-    },
+    }, // Nome da empresa
     enterpriseID: {
       type: String,
       required: true,
@@ -17,11 +17,11 @@ const AccountSchema = mongoose.Schema(
     password: {
       type: Number,
       required: true,
-    },
+    }, // Requer validação no Controller e ocultação em hash
     accountNumber: {
       type: String,
       required: false,
-    },
+    }, // Gerado automaticamente o numero da conta
   },
   {
     timestamps: true,
@@ -32,8 +32,8 @@ AccountSchema.pre('save', async function (next) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min;
-  };
-  this.accountNumber = `000${accNumber(1, 10000)}`;
+  } // Função que gera o numero aleatório para a conta bancária
+  this.accountNumber = `000${accNumber(1, 10000)}`; // Atribui o resultado da função ao accountNumber
   next();
 });
 

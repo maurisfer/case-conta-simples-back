@@ -1,23 +1,22 @@
 const mongoose = require('../../config/db'); // Importa o arquivo de configuração do banco de dados
-const { _id: id } = require('./accountModel');
+// const { _id: id } = require('./accountModel');
 
 const CardSchema = mongoose.Schema(
   {
     // account_id: {
     //   type: Number,
     //   required: true,
-    // }, // Vai puxar o id da conta e vincular o cartão a conta
+    // }, // Vai puxar o id da conta e vincular o cartão a conta (Verificando)
     cardName: {
       type: String,
       required: true,
-    },
+    }, // Dado pelo emissor do cartão no momento da geração
     cardNumber: {
       type: String,
-    },
+    }, // Gerado automaticamente quando o cartão é criado
     cardExpire: {
-      type: Date,
-      required: true,
-    },
+      type: String,
+    }, // Mês e ano de vencimento do cartão
   },
   {
     timestamps: true,
@@ -29,9 +28,11 @@ CardSchema.pre('save', async function (next) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min;
-  }
-  this.cardNumber = `**** **** **** ${CardNumber(1, 10000)}`;
+  } // Função que cria aletoriamento os 4 ultimos digitos do cartão
+  this.cardNumber = `**** **** **** ${CardNumber(1, 10000)}`; // Atruição do resultado da função ao cardNumer
   next();
+  const myDate = new Date();
+  this.cardExpire = `${myDate.getMonth() + 1}/${myDate.getFullYear() + 5}`; // Gambiarra provisória de exemplo de manipulação dasdatas de foma automática
 });
 
 const Card = mongoose.model('Card', CardSchema); // Cria o modelo a partir da configuração

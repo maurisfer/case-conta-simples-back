@@ -3,13 +3,13 @@ const mongoose = require('../../config/db'); // Importa o arquivo de configuraç
 const TransactionSchema = mongoose.Schema(
   {
     date: {
-      type: Date,
-      required: true,
+      type: String,
+      required: false,
     }, // Recebe a data da transação
-    sellerName: {
+    operatorName: {
       type: String,
       required: true,
-    }, // Recebe o nome do estabelecimento
+    }, // Recebe o nome do estabelecimento operador da transação de crédito/débito
     value: {
       type: Number,
       required: true,
@@ -28,7 +28,11 @@ TransactionSchema.pre('save', async function (next) {
   if (this.operationId === 0) {
     this.value *= -1;
     next();
-  }
+  } // Quando for operação de débito já é salvo automaticamente no banco de dados o valor negativo
+  const myDate = new Date();
+  this.date = `${myDate.getDate()}/${
+    myDate.getMonth() + 1
+  }/${myDate.getFullYear()}`; // Gambiarra provisória para criação e manipulação da data da operação
 });
 
 const Transaction = mongoose.model('Transaction', TransactionSchema); // Cria o modelo a partir da configuração
