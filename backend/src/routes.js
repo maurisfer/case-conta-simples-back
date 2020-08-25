@@ -6,5 +6,10 @@ const CardController = require('./app/Controllers/cardController');
 routes.post('/transactions', TransactionController.store);
 routes.post('/account', AccountController.store);
 routes.post('/card', CardController.store);
+routes.get('/getcardbyaccountid/:_id', CardController.getCardByAccountID);
+routes.get(
+  '/gettransactionbycardid/:_id',
+  TransactionController.getTransactionsByCardId
+);
 
 module.exports = routes;

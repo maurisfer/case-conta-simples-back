@@ -2,6 +2,10 @@ const mongoose = require('../../config/db'); // Importa o arquivo de configuraç
 
 const TransactionSchema = mongoose.Schema(
   {
+    card_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+    },
     date: {
       type: String,
       required: false,

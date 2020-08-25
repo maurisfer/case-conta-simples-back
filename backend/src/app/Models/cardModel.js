@@ -3,10 +3,10 @@ const mongoose = require('../../config/db'); // Importa o arquivo de configuraç
 
 const CardSchema = mongoose.Schema(
   {
-    // account_id: {
-    //   type: Number,
-    //   required: true,
-    // }, // Vai puxar o id da conta e vincular o cartão a conta (Verificando)
+    account_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+    }, // Vai puxar o id da conta e vincular o cartão a conta (Verificando)
     cardName: {
       type: String,
       required: true,
