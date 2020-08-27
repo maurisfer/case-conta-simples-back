@@ -33,7 +33,7 @@ AccountSchema.pre('save', async function (next) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min;
   } // Função que gera o numero aleatório para a conta bancária
-  this.accountNumber = `000${accNumber(1, 10000)}`; // Atribui o resultado da função ao accountNumber
+  this.accountNumber = `${accNumber(1, 10000000) - accNumber(1 - 10)}`; // Atribui o resultado da função ao accountNumber
   next();
 });
 
