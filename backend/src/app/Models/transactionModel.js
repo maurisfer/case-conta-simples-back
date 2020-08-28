@@ -38,7 +38,7 @@ TransactionSchema.pre('save', async function (next) {
     next();
   } // Quando for operação de débito já é salvo automaticamente no banco de dados o valor negativo
   const myDate = new Date();
-  this.month = `${myDate.getMonth() + 1}`;
+  this.month = `${myDate.getMonth() + 5}`;
   this.date = `${myDate.getDate()}/${this.month}/${myDate.getFullYear()}`; // Gambiarra provisória para criação e manipulação da data da operação
 });
 
