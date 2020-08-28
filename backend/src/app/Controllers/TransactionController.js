@@ -16,7 +16,6 @@ class TransactionController {
 
   // GET - Cálculo para o gráfico - endpoint: /transactions
   async TransactionsCredit(req, res) {
-    // const AllTransaction = await TransactionModel.find({});
     const janTransaction = await TransactionModel.find({
       month: '1',
       operationId: 1,
@@ -131,10 +130,8 @@ class TransactionController {
     });
   }
 
-  // GET - Cálculo para o gráfico - endpoint: /transactions 
+  // GET - Cálculo para o gráfico - endpoint: /transactions
   async TransactionsDebit(req, res) {
-    // const AllTransaction = await TransactionModel.find({});
-    //
     const janTransaction = await TransactionModel.find({
       month: '1',
       operationId: 0,
@@ -143,8 +140,6 @@ class TransactionController {
       (previousValue, element) => previousValue + element.value,
       0
     );
-    //
-    //
     const fevTransaction = await TransactionModel.find({
       month: '2',
       operationId: 0,
@@ -153,8 +148,6 @@ class TransactionController {
       (previousValue, element) => previousValue + element.value,
       0
     );
-    //
-    //
     const marTransaction = await TransactionModel.find({
       month: '3',
       operationId: 0,
@@ -163,8 +156,6 @@ class TransactionController {
       (previousValue, element) => previousValue + element.value,
       0
     );
-    //
-    //
     const abrTransaction = await TransactionModel.find({
       month: '4',
       operationId: 0,
@@ -173,8 +164,6 @@ class TransactionController {
       (previousValue, element) => previousValue + element.value,
       0
     );
-    //
-    //
     const maiTransaction = await TransactionModel.find({
       month: '5',
       operationId: 0,
@@ -183,8 +172,6 @@ class TransactionController {
       (previousValue, element) => previousValue + element.value,
       0
     );
-    //
-    //
     const junTransaction = await TransactionModel.find({
       month: '6',
       operationId: 0,
@@ -193,8 +180,6 @@ class TransactionController {
       (previousValue, element) => previousValue + element.value,
       0
     );
-    //
-    //
     const julTransaction = await TransactionModel.find({
       month: '7',
       operationId: 0,
@@ -203,7 +188,6 @@ class TransactionController {
       (previousValue, element) => previousValue + element.value,
       0
     );
-    //
     const agoTransaction = await TransactionModel.find({
       month: '8',
       operationId: 0,
@@ -212,8 +196,6 @@ class TransactionController {
       (previousValue, element) => previousValue + element.value,
       0
     );
-    //
-    //
     const setTransaction = await TransactionModel.find({
       month: '9',
       operationId: 0,
@@ -222,8 +204,6 @@ class TransactionController {
       (previousValue, element) => previousValue + element.value,
       0
     );
-    //
-    //
     const outTransaction = await TransactionModel.find({
       month: '10',
       operationId: 0,
@@ -232,8 +212,6 @@ class TransactionController {
       (previousValue, element) => previousValue + element.value,
       0
     );
-    //
-    //
     const novTransaction = await TransactionModel.find({
       month: '11',
       operationId: 0,
@@ -242,8 +220,6 @@ class TransactionController {
       (previousValue, element) => previousValue + element.value,
       0
     );
-    //
-    //
     const dezTransaction = await TransactionModel.find({
       month: '12',
       operationId: 0,
@@ -252,8 +228,7 @@ class TransactionController {
       (previousValue, element) => previousValue + element.value,
       0
     );
-    //
-    // res.status(200).json({ totalAgosto });
+
     Promise.all([
       totalJan,
       totalFev,
@@ -272,7 +247,5 @@ class TransactionController {
     });
   }
 }
-
-// Promise all - Pesquisar
 
 module.exports = new TransactionController();

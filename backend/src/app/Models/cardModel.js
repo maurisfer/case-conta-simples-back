@@ -29,7 +29,7 @@ CardSchema.pre('save', async function (next) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min;
   } // Função que cria aletoriamento os 4 ultimos digitos do cartão
-  this.cardNumber = `**** **** **** ${CardNumber(1, 10000)}`; // Atruição do resultado da função ao cardNumer
+  this.cardNumber = `${CardNumber(1, 10000)}`; // Atruição do resultado da função ao cardNumer
   next();
   const myDate = new Date();
   this.cardExpire = `${myDate.getMonth() + 1}/${myDate.getFullYear() + 5}`; // Gambiarra provisória de exemplo de manipulação dasdatas de foma automática

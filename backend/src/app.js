@@ -5,7 +5,7 @@ require('express-async-errors');
 const morgan = require('morgan'); // Mostra as métricas de req e res
 const helmet = require('helmet'); // Auxilia nas máscaras dos headers
 const routes = require('./routes'); // Importa o módulo de rotas
-const logger = require('./helper/logger'); // Formata s logs de forma mais profissional
+const logger = require('./helper/logger'); // Formata os logs de forma mais profissional
 
 const app = express(); // Instância a função express que permite a utilização mais fácil das funções do express.
 

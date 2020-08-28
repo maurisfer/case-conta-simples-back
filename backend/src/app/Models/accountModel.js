@@ -1,3 +1,4 @@
+const bcrypt = require('bcryptjs'); //  Importa biblioteca de criptografia
 const mongoose = require('../../config/db'); // Importa o arquivo de configuração do banco de dados
 
 const AccountSchema = mongoose.Schema(
@@ -15,7 +16,7 @@ const AccountSchema = mongoose.Schema(
       required: true,
     }, // E-mail do gestor da conta
     password: {
-      type: Number,
+      type: String,
       required: true,
     }, // Requer validação no Controller e ocultação em hash
     accountNumber: {
@@ -33,7 +34,9 @@ AccountSchema.pre('save', async function (next) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min;
   } // Função que gera o numero aleatório para a conta bancária
-  this.accountNumber = `${accNumber(1, 10000000) - accNumber(1 - 10)}`; // Atribui o resultado da função ao accountNumber
+  this.accountNumber = `${accNumber(1, 10000000)}-${accNumber(1, 10)}`; // Atribui o resultado da função ao accountNumber
+  const hashPass = await bcrypt.hash(this.password, 10);
+  this.password = hashPass;
   next();
 });
 
