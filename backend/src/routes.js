@@ -11,6 +11,7 @@ routes.get(
   '/gettransactionbycardid/:_id',
   TransactionController.getTransactionsByCardId
 );
-routes.get('/transactions', TransactionController.getAllTransaction);
+routes.get('/transactions/cre', TransactionController.TransactionsCredit);
+routes.get('/transactions/deb', TransactionController.TransactionsDebit);
 
 module.exports = routes;

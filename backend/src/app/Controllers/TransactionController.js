@@ -14,24 +14,265 @@ class TransactionController {
     res.status(200).json({ CardTransaction });
   }
 
-  // GET - Cálculo para o gráfico - endpoint: /transactions 
-  async getAllTransaction(req, res) {
-    const AllTransaction = await TransactionModel.find({});
+  // GET - Cálculo para o gráfico - endpoint: /transactions
+  async TransactionsCredit(req, res) {
+    // const AllTransaction = await TransactionModel.find({});
+    const janTransaction = await TransactionModel.find({
+      month: '1',
+      operationId: 1,
+    });
+    const totalJan = janTransaction.reduce(
+      (previousValue, element) => previousValue + element.value,
+      0
+    );
+    const fevTransaction = await TransactionModel.find({
+      month: '2',
+      operationId: 1,
+    });
+    const totalFev = fevTransaction.reduce(
+      (previousValue, element) => previousValue + element.value,
+      0
+    );
+    const marTransaction = await TransactionModel.find({
+      month: '3',
+      operationId: 1,
+    });
+    const totalMar = marTransaction.reduce(
+      (previousValue, element) => previousValue + element.value,
+      0
+    );
+    const abrTransaction = await TransactionModel.find({
+      month: '4',
+      operationId: 1,
+    });
+    const totalAbr = abrTransaction.reduce(
+      (previousValue, element) => previousValue + element.value,
+      0
+    );
+    const maiTransaction = await TransactionModel.find({
+      month: '5',
+      operationId: 1,
+    });
+    const totalMai = maiTransaction.reduce(
+      (previousValue, element) => previousValue + element.value,
+      0
+    );
+    const junTransaction = await TransactionModel.find({
+      month: '6',
+      operationId: 1,
+    });
+    const totalJun = junTransaction.reduce(
+      (previousValue, element) => previousValue + element.value,
+      0
+    );
+    const julTransaction = await TransactionModel.find({
+      month: '7',
+      operationId: 1,
+    });
+    const totalJul = julTransaction.reduce(
+      (previousValue, element) => previousValue + element.value,
+      0
+    );
     const agoTransaction = await TransactionModel.find({
       month: '8',
       operationId: 1,
     });
-    agoTransaction.forEach((element) => {
-      const valores = element.value;
-      console.log(valores);
-      return valores;
+    const totalAgo = agoTransaction.reduce(
+      (previousValue, element) => previousValue + element.value,
+      0
+    );
+    const setTransaction = await TransactionModel.find({
+      month: '9',
+      operationId: 1,
     });
-    // Nesse for each eu consigo acessar individalmente os valores que quero através dos filtros que fiz. Porém, tentaria fazer um reduce, mas ele também percorre um array. Nesse caso, os output são somente os valores individuas e não ficam em um array para que eu possa fazer o reduce. Alguma dica?
-    // console.log(agoTransaction);
-    res.status(200).json({ AllTransaction });
+    const totalSet = setTransaction.reduce(
+      (previousValue, element) => previousValue + element.value,
+      0
+    );
+    const outTransaction = await TransactionModel.find({
+      month: '10',
+      operationId: 1,
+    });
+    const totalOut = outTransaction.reduce(
+      (previousValue, element) => previousValue + element.value,
+      0
+    );
+    const novTransaction = await TransactionModel.find({
+      month: '11',
+      operationId: 1,
+    });
+    const totalNov = novTransaction.reduce(
+      (previousValue, element) => previousValue + element.value,
+      0
+    );
+    const dezTransaction = await TransactionModel.find({
+      month: '12',
+      operationId: 1,
+    });
+    const totalDez = dezTransaction.reduce(
+      (previousValue, element) => previousValue + element.value,
+      0
+    );
+    Promise.all([
+      totalJan,
+      totalFev,
+      totalMar,
+      totalAbr,
+      totalMai,
+      totalJun,
+      totalJul,
+      totalAgo,
+      totalSet,
+      totalOut,
+      totalNov,
+      totalDez,
+    ]).then((data) => {
+      res.status(200).json({ data });
+    });
+  }
 
-    // Promise all - Pesquisar
+  // GET - Cálculo para o gráfico - endpoint: /transactions 
+  async TransactionsDebit(req, res) {
+    // const AllTransaction = await TransactionModel.find({});
+    //
+    const janTransaction = await TransactionModel.find({
+      month: '1',
+      operationId: 0,
+    });
+    const totalJan = janTransaction.reduce(
+      (previousValue, element) => previousValue + element.value,
+      0
+    );
+    //
+    //
+    const fevTransaction = await TransactionModel.find({
+      month: '2',
+      operationId: 0,
+    });
+    const totalFev = fevTransaction.reduce(
+      (previousValue, element) => previousValue + element.value,
+      0
+    );
+    //
+    //
+    const marTransaction = await TransactionModel.find({
+      month: '3',
+      operationId: 0,
+    });
+    const totalMar = marTransaction.reduce(
+      (previousValue, element) => previousValue + element.value,
+      0
+    );
+    //
+    //
+    const abrTransaction = await TransactionModel.find({
+      month: '4',
+      operationId: 0,
+    });
+    const totalAbr = abrTransaction.reduce(
+      (previousValue, element) => previousValue + element.value,
+      0
+    );
+    //
+    //
+    const maiTransaction = await TransactionModel.find({
+      month: '5',
+      operationId: 0,
+    });
+    const totalMai = maiTransaction.reduce(
+      (previousValue, element) => previousValue + element.value,
+      0
+    );
+    //
+    //
+    const junTransaction = await TransactionModel.find({
+      month: '6',
+      operationId: 0,
+    });
+    const totalJun = junTransaction.reduce(
+      (previousValue, element) => previousValue + element.value,
+      0
+    );
+    //
+    //
+    const julTransaction = await TransactionModel.find({
+      month: '7',
+      operationId: 0,
+    });
+    const totalJul = julTransaction.reduce(
+      (previousValue, element) => previousValue + element.value,
+      0
+    );
+    //
+    const agoTransaction = await TransactionModel.find({
+      month: '8',
+      operationId: 0,
+    });
+    const totalAgo = agoTransaction.reduce(
+      (previousValue, element) => previousValue + element.value,
+      0
+    );
+    //
+    //
+    const setTransaction = await TransactionModel.find({
+      month: '9',
+      operationId: 0,
+    });
+    const totalSet = setTransaction.reduce(
+      (previousValue, element) => previousValue + element.value,
+      0
+    );
+    //
+    //
+    const outTransaction = await TransactionModel.find({
+      month: '10',
+      operationId: 0,
+    });
+    const totalOut = outTransaction.reduce(
+      (previousValue, element) => previousValue + element.value,
+      0
+    );
+    //
+    //
+    const novTransaction = await TransactionModel.find({
+      month: '11',
+      operationId: 0,
+    });
+    const totalNov = novTransaction.reduce(
+      (previousValue, element) => previousValue + element.value,
+      0
+    );
+    //
+    //
+    const dezTransaction = await TransactionModel.find({
+      month: '12',
+      operationId: 0,
+    });
+    const totalDez = dezTransaction.reduce(
+      (previousValue, element) => previousValue + element.value,
+      0
+    );
+    //
+    // res.status(200).json({ totalAgosto });
+    Promise.all([
+      totalJan,
+      totalFev,
+      totalMar,
+      totalAbr,
+      totalMai,
+      totalJun,
+      totalJul,
+      totalAgo,
+      totalSet,
+      totalOut,
+      totalNov,
+      totalDez,
+    ]).then((data) => {
+      res.status(200).json({ data });
+    });
   }
 }
+
+// Promise all - Pesquisar
 
 module.exports = new TransactionController();
