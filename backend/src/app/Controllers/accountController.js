@@ -32,7 +32,7 @@ class AccountController {
     const token = jwt.sign({ id }, process.env.JWT_KEY, {
       expiresIn: '1d',
     }); // Usa a biblioteca jwt para criar token de validação com o id do usuário e as informações vindas do header criptografadas pela senha process.env.JWT_KEY
-    return res.json({ token });
+    return res.json({ token, id });
   }
 }
 

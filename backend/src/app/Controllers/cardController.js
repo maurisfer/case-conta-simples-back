@@ -4,6 +4,7 @@ const AccountModel = require('../Models/accountModel');
 
 class CardController {
   async store(req, res) {
+    
     const { account_id, cardName, password } = req.body;
 
     const Verifypass = await AccountModel.findOne({ account_id });
@@ -15,7 +16,7 @@ class CardController {
   }
 
   async getCardByAccountID(req, res) {
-    const { account_id: id } = req.body; // Puxa da URL o id da conta
+    const { account_id: id } = req.body; // Puxa do body o id da conta
     const findCard = await CardModel.find({ account_id: id });
     res.status(200).json({ findCard }); // Quando for consultar pelo front é essa variavel que irá consumir
   }
