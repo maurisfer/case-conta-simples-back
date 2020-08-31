@@ -11,7 +11,8 @@ routes.post('/transactions', TransactionController.store); // Criar transações
 // routes.use(jwtMid); // Implantação global da validação de token
 routes.post('/card', CardController.store); // Cria os cartões de acordo com o cardModel
 
-routes.get('/getcardbyaccountid', CardController.getCardByAccountID); // Puxa todos os cartões ligados as contas
+
+routes.get('/card', CardController.getCardByAccountID); // Puxa todos os cartões ligados as contas
 routes.get(
   '/gettransactionbycardid/:_id',
   TransactionController.getTransactionsByCardId

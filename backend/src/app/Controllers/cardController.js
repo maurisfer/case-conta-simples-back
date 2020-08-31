@@ -4,9 +4,7 @@ const AccountModel = require('../Models/accountModel');
 
 class CardController {
   async store(req, res) {
-    
     const { account_id, cardName, password } = req.body;
-
     const Verifypass = await AccountModel.findOne({ account_id });
     if (Verifypass) {
       await bcrypt.compare(password, Verifypass.password);
