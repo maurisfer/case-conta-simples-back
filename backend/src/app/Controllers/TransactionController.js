@@ -126,7 +126,7 @@ class TransactionController {
       totalNov,
       totalDez,
     ]).then((data) => {
-      res.status(200).json([data]);
+      res.status(200).json(data);
     });
   }
 
@@ -243,7 +243,7 @@ class TransactionController {
       totalNov,
       totalDez,
     ]).then((data) => {
-      res.status(200).json([data]);
+      res.status(200).json(data);
     });
   }
 }
