@@ -7,11 +7,11 @@ class TransactionController {
     return res.status(201).json({ Transaction });
   }
 
-  // GET - Transações pelo ID do Cartão
+  // GET - Transações pelo ID do Cartã
   async getTransactionsByCardId(req, res) {
-    const { _id: id } = req.params;
-    const CardTransaction = await TransactionModel.find({ card_id: id });
-    res.status(200).json({ CardTransaction });
+    const { card_id } = req.params;
+    const CardTransaction = await TransactionModel.find(card_id);
+    res.status(200).json(CardTransaction);
   }
 
   // GET - Cálculo para o gráfico - endpoint: /transactions

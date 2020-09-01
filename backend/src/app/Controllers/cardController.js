@@ -14,8 +14,8 @@ class CardController {
   }
 
   async getCardByAccountID(req, res) {
-    const { account_id: id } = req.body; // Puxa do body o id da conta
-    const findCard = await CardModel.find({ account_id: id });
+    const { account_id } = req.params; // Puxa do body o id da conta
+    const findCard = await CardModel.find( account_id );
     res.status(200).json({ findCard }); // Quando for consultar pelo front é essa variavel que irá consumir
   }
 }
