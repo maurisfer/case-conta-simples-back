@@ -3,19 +3,19 @@ const TransactionModel = require('../Models/transactionModel');
 class TransactionController {
   // POST - Transações
   async store(req, res) {
-    const Transaction = await TransactionModel.create(req.body);
+    const Transaction = await TransactionModel.create([req.body]);
     return res.status(201).json({ Transaction });
   }
 
   // GET - Transações pelo ID do Cartã
-  async getTransactionsByCardId(req, res) {
-    const { card_id } = req.params;
-    const CardTransaction = await TransactionModel.find(card_id);
+  async show(req, res) {
+    const { id: card_id } = req.params;
+    const CardTransaction = await TransactionModel.find({ card_id });
     res.status(200).json(CardTransaction);
   }
 
-  // GET - Cálculo para o gráfico - endpoint: /transactions
-  async TransactionsCredit(req, res) {
+  // GET - Cálculo para o gráfico - endpoint: /transactionscd
+  async showCredit(req, res) {
     const janTransaction = await TransactionModel.find({
       month: '1',
       operationId: 1,
@@ -130,8 +130,8 @@ class TransactionController {
     });
   }
 
-  // GET - Cálculo para o gráfico - endpoint: /transactions
-  async TransactionsDebit(req, res) {
+  // GET - Cálculo para o gráfico - endpoint: /transactionsdb
+  async showDebit(req, res) {
     const janTransaction = await TransactionModel.find({
       month: '1',
       operationId: 0,
