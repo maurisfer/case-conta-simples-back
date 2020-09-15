@@ -14,6 +14,7 @@ routes.get('/account', AccountController.index);
 routes.get('/oneaccount/:id', AccountController.show);
 routes.get('/allcard/:id', CardController.index);
 routes.get('/transactions/:id', TransactionController.show);
+routes.get('/transactions', TransactionController.index);
 routes.get('/transactionscd', TransactionController.showCredit);
 routes.get('/transactionsdb', TransactionController.showDebit);
 

@@ -6,6 +6,10 @@ const TransactionSchema = mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       required: true,
     },
+    cardNumber: {
+      type: Number,
+      required: true,
+    },
     date: {
       type: String,
       required: false,
@@ -33,13 +37,10 @@ const TransactionSchema = mongoose.Schema(
 ); // Configuração dos dados que vão para o banco de dados através do Schema da biblioteca mongoose
 
 TransactionSchema.pre('save', async function (next) {
-  if (this.operationId === 0) {
-    this.value *= -1;
-    next();
-  } // Quando for operação de débito já é salvo automaticamente no banco de dados o valor negativo
   const myDate = new Date();
   this.month = `${myDate.getMonth() + 1}`;
   this.date = `${myDate.getDate()}/${this.month}/${myDate.getFullYear()}`; // Gambiarra provisória para criação e manipulação da data da operação
+  next();
 });
 
 const Transaction = mongoose.model('Transaction', TransactionSchema); // Cria o modelo a partir da configuração

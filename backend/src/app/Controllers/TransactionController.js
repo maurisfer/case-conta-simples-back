@@ -14,6 +14,11 @@ class TransactionController {
     res.status(200).json(CardTransaction);
   }
 
+  async index(req, res) {
+    const allTransactions = await TransactionModel.find({ });
+    res.status(200).json(allTransactions);
+  }
+
   // GET - Cálculo para o gráfico - endpoint: /transactionscd
   async showCredit(req, res) {
     const janTransaction = await TransactionModel.find({
