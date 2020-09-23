@@ -1,5 +1,4 @@
 const mongoose = require('../../config/db'); // Importa o arquivo de configuração do banco de dados
-// const { _id: id } = require('./accountModel');
 
 const CardSchema = mongoose.Schema(
   {

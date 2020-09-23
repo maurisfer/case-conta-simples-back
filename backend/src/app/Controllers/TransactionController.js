@@ -22,7 +22,7 @@ class TransactionController {
   // GET - Cálculo para o gráfico - endpoint: /transactionscd
   async showCredit(req, res) {
     const janTransaction = await TransactionModel.find({
-      month: '1',
+      month: '01',
       operationId: 1,
     });
     const totalJan = janTransaction.reduce(
@@ -30,7 +30,7 @@ class TransactionController {
       0
     );
     const fevTransaction = await TransactionModel.find({
-      month: '2',
+      month: '02',
       operationId: 1,
     });
     const totalFev = fevTransaction.reduce(
@@ -38,7 +38,7 @@ class TransactionController {
       0
     );
     const marTransaction = await TransactionModel.find({
-      month: '3',
+      month: '03',
       operationId: 1,
     });
     const totalMar = marTransaction.reduce(
@@ -46,7 +46,7 @@ class TransactionController {
       0
     );
     const abrTransaction = await TransactionModel.find({
-      month: '4',
+      month: '04',
       operationId: 1,
     });
     const totalAbr = abrTransaction.reduce(
@@ -54,7 +54,7 @@ class TransactionController {
       0
     );
     const maiTransaction = await TransactionModel.find({
-      month: '5',
+      month: '05',
       operationId: 1,
     });
     const totalMai = maiTransaction.reduce(
@@ -62,7 +62,7 @@ class TransactionController {
       0
     );
     const junTransaction = await TransactionModel.find({
-      month: '6',
+      month: '06',
       operationId: 1,
     });
     const totalJun = junTransaction.reduce(
@@ -70,7 +70,7 @@ class TransactionController {
       0
     );
     const julTransaction = await TransactionModel.find({
-      month: '7',
+      month: '07',
       operationId: 1,
     });
     const totalJul = julTransaction.reduce(
@@ -78,7 +78,7 @@ class TransactionController {
       0
     );
     const agoTransaction = await TransactionModel.find({
-      month: '8',
+      month: '08',
       operationId: 1,
     });
     const totalAgo = agoTransaction.reduce(
@@ -86,7 +86,7 @@ class TransactionController {
       0
     );
     const setTransaction = await TransactionModel.find({
-      month: '9',
+      month: '09',
       operationId: 1,
     });
     const totalSet = setTransaction.reduce(
@@ -138,7 +138,7 @@ class TransactionController {
   // GET - Cálculo para o gráfico - endpoint: /transactionsdb
   async showDebit(req, res) {
     const janTransaction = await TransactionModel.find({
-      month: '1',
+      month: '01',
       operationId: 0,
     });
     const totalJan = janTransaction.reduce(
@@ -146,7 +146,7 @@ class TransactionController {
       0
     );
     const fevTransaction = await TransactionModel.find({
-      month: '2',
+      month: '02',
       operationId: 0,
     });
     const totalFev = fevTransaction.reduce(
@@ -154,7 +154,7 @@ class TransactionController {
       0
     );
     const marTransaction = await TransactionModel.find({
-      month: '3',
+      month: '03',
       operationId: 0,
     });
     const totalMar = marTransaction.reduce(
@@ -162,7 +162,7 @@ class TransactionController {
       0
     );
     const abrTransaction = await TransactionModel.find({
-      month: '4',
+      month: '04',
       operationId: 0,
     });
     const totalAbr = abrTransaction.reduce(
@@ -170,7 +170,7 @@ class TransactionController {
       0
     );
     const maiTransaction = await TransactionModel.find({
-      month: '5',
+      month: '05',
       operationId: 0,
     });
     const totalMai = maiTransaction.reduce(
@@ -178,7 +178,7 @@ class TransactionController {
       0
     );
     const junTransaction = await TransactionModel.find({
-      month: '6',
+      month: '06',
       operationId: 0,
     });
     const totalJun = junTransaction.reduce(
@@ -186,7 +186,7 @@ class TransactionController {
       0
     );
     const julTransaction = await TransactionModel.find({
-      month: '7',
+      month: '07',
       operationId: 0,
     });
     const totalJul = julTransaction.reduce(
@@ -194,7 +194,7 @@ class TransactionController {
       0
     );
     const agoTransaction = await TransactionModel.find({
-      month: '8',
+      month: '08',
       operationId: 0,
     });
     const totalAgo = agoTransaction.reduce(
@@ -202,7 +202,7 @@ class TransactionController {
       0
     );
     const setTransaction = await TransactionModel.find({
-      month: '9',
+      month: '09',
       operationId: 0,
     });
     const totalSet = setTransaction.reduce(

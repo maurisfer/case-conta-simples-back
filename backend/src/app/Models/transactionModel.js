@@ -36,12 +36,12 @@ const TransactionSchema = mongoose.Schema(
   }
 ); // Configuração dos dados que vão para o banco de dados através do Schema da biblioteca mongoose
 
-TransactionSchema.pre('save', async function (next) {
-  const myDate = new Date();
-  this.month = `${myDate.getMonth() + 1}`;
-  this.date = `${myDate.getDate()}/${this.month}/${myDate.getFullYear()}`; // Gambiarra provisória para criação e manipulação da data da operação
-  next();
-});
+// TransactionSchema.pre('save', async function (next) {
+//   const myDate = new Date();
+//   this.month = `${myDate.getMonth() + 1}`;
+//   this.date = `${myDate.getDate().toLocaleString('pt-br')}/${this.month}/${myDate.getFullYear()}`; // Gambiarra provisória para criação e manipulação da data da operação
+//   next();
+// });
 
 const Transaction = mongoose.model('Transaction', TransactionSchema); // Cria o modelo a partir da configuração
 module.exports = Transaction; // Exporta o modelo

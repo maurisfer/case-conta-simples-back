@@ -1,13 +1,22 @@
 const bcrypt = require('bcryptjs'); //  Importa a biblioteca de criptografia
 const jwt = require('jsonwebtoken'); // mporta a biblioteca de geração de tokens
+const Account = require('../Models/accountModel');
 const AccountModel = require('../Models/accountModel');
 
 class AccountController {
   // POST - Create an account
   async store(req, res) {
-    const Account = await AccountModel.create([req.body]); // Involving req.body with [] forces return an array
+    const Account = await AccountModel.create(req.body); // Involving req.body with [] forces return an array
     // console.log(Array.isArray(Account)); Should return true in console.
-    return res.status(201).json({ Account }); // return Array
+    return res.status(201).json(Account); // return Array
+  }
+
+  // GET - One single account
+  async show(req, res) {
+    const { account_id: id } = req.params;
+    const oneAccount = await AccountModel.findOne(id);
+    console.log(oneAccount);
+    return res.status(200).json([oneAccount]);
   }
 
   // GET - All account index
@@ -15,13 +24,6 @@ class AccountController {
     const getAccounts = await AccountModel.find();
     // console.log(Array.isArray(getAccounts)); Should return true in console.
     return res.status(200).json({ getAccounts });
-  }
-
-  // GET - One single account
-  async show(req, res) {
-    const { account_id: id } = req.params;
-    const oneAccount = await AccountModel.findOne(id);
-    return res.status(200).json([oneAccount]);
   }
 
   // POST - Validação de login e senha
